@@ -1,8 +1,8 @@
-export * from './lib/constants';
-export * from './lib/db';
-export * from './lib/jwt';
-export * from './lib/objects';
-export * from './lib/routes';
+export { default as constants } from './lib/constants';
+export { default as db } from './lib/db';
+export { default as jwt } from './lib/jwt';
+export { default as objects } from './lib/objects';
+export { default as routes } from './lib/routes';
 
 export { MongooseTypes } from './lib/types/db/mongoose';
 export { JwtTypes } from './lib/types/jwt';

@@ -1,4 +1,4 @@
-import { NextFunction } from 'express';
+import { NextFunction, Response } from 'express';
 import jwt from '../../../jwt';
 import UnauthorizedError from '../../../objects/errors/unauthorized-error';
 import { JwtTypes } from '../../../types/jwt';

@@ -12,7 +12,10 @@ const setUserData = (
   if (!req.session?.jwt)
     return next(new UnauthorizedError('There is no token in the request.'));
 
-  const [payload, badTokenError] = jwt.verify(req.session.jwt);
+  const [payload, badTokenError] = jwt.verify({
+    token: req.session.jwt,
+    secret: process.env.JWT_SECRET!,
+  });
   if (typeof payload === 'undefined' && badTokenError)
     return next(new UnauthorizedError(badTokenError.reason));
 

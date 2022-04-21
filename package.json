@@ -1,5 +1,13 @@
 {
   "name": "@msnr-ticketing-app/common",
   "version": "0.0.1",
-  "description": "Common utilities for a microservice-based ticketing application."
+  "description": "Common utilities for a microservice-based ticketing application.",
+  "scripts": {
+    "clean": "del ./build/*",
+    "build": "npm run clean && tsc"
+  },
+  "devDependencies": {
+    "del-cli": "^4.0.1",
+    "typescript": "^4.6.3"
+  }
 }

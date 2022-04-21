@@ -1,15 +1,12 @@
-interface Color {
-  red: number;
-  blue: number;
-  green: number;
-}
+export * from './lib/constants';
+export * from './lib/db';
+export * from './lib/jwt';
+export * from './lib/objects';
+export * from './lib/routes';
 
-const color: Color = {
-  red: 10,
-  blue: 10,
-  green: 10,
-};
-
-console.log(color);
-
-export default color;
+export { MongooseTypes } from './lib/types/db/mongoose';
+export { JwtTypes } from './lib/types/jwt';
+export { MiddlewareTypes } from './lib/types/middlewares';
+export { ApplicationResponseTypes } from './lib/types/objects/application-response';
+export { ErrorObjectTypes } from './lib/types/objects/errors';
+export { ReturnTypes } from './lib/types/returns';

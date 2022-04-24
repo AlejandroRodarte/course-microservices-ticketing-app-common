@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { Document, FilterQuery } from 'mongoose';
 import DatabaseOperationError from '../../objects/errors/database-operation-error';
 import { ReturnTypes } from '../returns';
@@ -15,12 +16,13 @@ export namespace DBHelpersTypes {
     InstanceType<typeof DatabaseOperationError>
   >;
   // Model.save()
-  export type SaveFunction<DocumentType> = (
-    document: DocumentType
-  ) => ReturnTypes.AsyncTuple<
+  export type SaveDataType<DocumentType> = ReturnTypes.AsyncTuple<
     DocumentType,
     InstanceType<typeof DatabaseOperationError>
   >;
+  export type SaveFunction<DocumentType> = (
+    document: DocumentType
+  ) => SaveDataType<DocumentType>;
   // Model.findOneById()
   export type FindByIdDataType<DocumentType> =
     | (DocumentType & {
@@ -39,6 +41,54 @@ export namespace DBHelpersTypes {
     filter: FilterQuery<DocumentType>
   ) => ReturnTypes.AsyncTuple<
     FindOneDataType<DocumentType>,
+    InstanceType<typeof DatabaseOperationError>
+  >;
+  // exists() wrapper definitions
+  export interface ExistsArgs<
+    DocumentType,
+    ModelType extends mongoose.Model<DocumentType>
+  > {
+    Model: ModelType;
+    filters: FilterQuery<DocumentType>;
+    errorMessage: string;
+  }
+  export type ExistsReturns<DocumentType> = ReturnTypes.AsyncTuple<
+    ExistsDataType<DocumentType>,
+    InstanceType<typeof DatabaseOperationError>
+  >;
+  // findById() wrapper definitions
+  export interface FindByIdArgs<
+    DocumentType,
+    ModelType extends mongoose.Model<DocumentType>
+  > {
+    Model: ModelType;
+    id: string;
+    errorMessage: string;
+  }
+  export type FindByIdReturns<DocumentType> = ReturnTypes.AsyncTuple<
+    FindByIdDataType<DocumentType>,
+    InstanceType<typeof DatabaseOperationError>
+  >;
+  // findOne() wrapper definitions
+  export interface FindOneArgs<
+    DocumentType,
+    ModelType extends mongoose.Model<DocumentType>
+  > {
+    Model: ModelType;
+    filters: FilterQuery<DocumentType>;
+    errorMessage: string;
+  }
+  export type FindOneReturns<DocumentType> = ReturnTypes.AsyncTuple<
+    FindOneDataType<DocumentType>,
+    InstanceType<typeof DatabaseOperationError>
+  >;
+  // save() wrapper definitions
+  export interface SaveArgs<DocumentType extends mongoose.Document> {
+    document: DocumentType;
+    errorMessage: string;
+  }
+  export type SaveReturns<DocumentType> = ReturnTypes.AsyncTuple<
+    SaveDataType<DocumentType>,
     InstanceType<typeof DatabaseOperationError>
   >;
 }

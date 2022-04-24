@@ -9,7 +9,10 @@ async function findOne<
   Model,
   filters,
   errorMessage,
-}: DBHelpersTypes.FindOneArgs<DocumentType, ModelType>) {
+}: DBHelpersTypes.FindOneArgs<
+  DocumentType,
+  ModelType
+>): DBHelpersTypes.FindOneReturns<DocumentType> {
   try {
     const user = await Model.findOne(filters);
     return [user, undefined];

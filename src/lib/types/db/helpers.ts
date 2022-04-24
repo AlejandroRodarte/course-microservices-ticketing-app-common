@@ -16,10 +16,7 @@ export namespace DBHelpersTypes {
     InstanceType<typeof DatabaseOperationError>
   >;
   // Model.save()
-  export type SaveDataType<DocumentType> = ReturnTypes.AsyncTuple<
-    DocumentType,
-    InstanceType<typeof DatabaseOperationError>
-  >;
+  export type SaveDataType<DocumentType> = DocumentType;
   export type SaveFunction<DocumentType> = (
     document: DocumentType
   ) => SaveDataType<DocumentType>;

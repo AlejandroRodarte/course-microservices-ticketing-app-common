@@ -9,7 +9,10 @@ async function findById<
   Model,
   id,
   errorMessage,
-}: DBHelpersTypes.FindByIdArgs<DocumentType, ModelType>) {
+}: DBHelpersTypes.FindByIdArgs<
+  DocumentType,
+  ModelType
+>): DBHelpersTypes.FindByIdReturns<DocumentType> {
   try {
     const model = await Model.findById(id);
     return [model, undefined];

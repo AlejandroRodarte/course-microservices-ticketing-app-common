@@ -5,7 +5,7 @@ import { DBHelpersTypes } from '../../types/db/helpers';
 async function save<DocumentType extends mongoose.Document>({
   document,
   errorMessage,
-}: DBHelpersTypes.SaveArgs<DocumentType>) {
+}: DBHelpersTypes.SaveArgs<DocumentType>): DBHelpersTypes.SaveReturns<DocumentType> {
   try {
     const savedDocument = await document.save();
     return [savedDocument, undefined];

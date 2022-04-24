@@ -10,3 +10,4 @@ export { MiddlewareTypes } from './lib/types/middlewares';
 export { ApplicationResponseTypes } from './lib/types/objects/application-response';
 export { ErrorObjectTypes } from './lib/types/objects/errors';
 export { ReturnTypes } from './lib/types/returns';
+export { DBHelpersTypes } from './lib/types/db/helpers';

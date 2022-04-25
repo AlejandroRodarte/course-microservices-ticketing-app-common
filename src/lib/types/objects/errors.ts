@@ -4,6 +4,6 @@ export namespace ErrorObjectTypes {
     field?: string;
   }
   export type DatabaseOperationErrorTypes = 'exists' | 'save' | 'find-by-id' | 'find-one';
-  export type EntityErrorTypes = 'user';
+  export type EntityErrorTypes = 'user' | 'ticket';
   export type LibraryErrorTypes = 'bcrypt';
 }

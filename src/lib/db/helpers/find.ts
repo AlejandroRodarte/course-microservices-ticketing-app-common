@@ -2,26 +2,26 @@ import mongoose from 'mongoose';
 import objects from '../../objects';
 import { DBHelpersTypes } from '../../types/db/helpers';
 
-async function findOne<
+async function find<
   DocumentType,
   ModelType extends mongoose.Model<DocumentType>
 >({
   Model,
   filters,
   errorMessage,
-}: DBHelpersTypes.FindOneArgs<
+}: DBHelpersTypes.FindArgs<
   DocumentType,
   ModelType
->): DBHelpersTypes.FindOneReturns<DocumentType> {
+>): DBHelpersTypes.FindReturns<DocumentType> {
   try {
-    const document = await Model.findOne(filters);
-    return [document, undefined];
+    const documents = await Model.find(filters);
+    return [documents, undefined];
   } catch (e) {
     return [
       undefined,
-      new objects.errors.DatabaseOperationError('find-one', errorMessage),
+      new objects.errors.DatabaseOperationError('find', errorMessage),
     ];
   }
 }
 
-export default findOne;
+export default find;

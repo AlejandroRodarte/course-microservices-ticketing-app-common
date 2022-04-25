@@ -14,8 +14,8 @@ async function findById<
   ModelType
 >): DBHelpersTypes.FindByIdReturns<DocumentType> {
   try {
-    const model = await Model.findById(id);
-    return [model, undefined];
+    const document = await Model.findById(id);
+    return [document, undefined];
   } catch (e) {
     return [
       undefined,

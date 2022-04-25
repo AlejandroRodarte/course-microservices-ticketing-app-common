@@ -4,6 +4,14 @@ import ApplicationResponse from '../application-response';
 import CustomError from './custom-error';
 import UniversalError from './universal-error';
 
+interface IDatabaseConnectionError {
+  type: string;
+  status: number;
+  code: string;
+  message: string;
+  reason: string;
+}
+
 class DatabaseConnectionError extends CustomError {
   public readonly type = DATABASE_CONNECTION_ERROR;
   status: number = 500;
@@ -16,6 +24,16 @@ class DatabaseConnectionError extends CustomError {
     this._reason = reason;
     // only because we are extending a built-in class
     Object.setPrototypeOf(this, DatabaseConnectionError.prototype);
+  }
+
+  toJSON(): IDatabaseConnectionError {
+    return {
+      type: this.type,
+      status: this.status,
+      code: this.code,
+      message: this.message,
+      reason: this.reason,
+    };
   }
 
   toApplicationResponse(): ApplicationResponse<undefined, UniversalError> {
@@ -37,6 +55,10 @@ class DatabaseConnectionError extends CustomError {
 
   get reason() {
     return this._reason;
+  }
+
+  set reason(reason: string) {
+    this._reason = reason;
   }
 }
 

@@ -4,6 +4,14 @@ import ApplicationResponse from '../application-response';
 import CustomError from './custom-error';
 import UniversalError from './universal-error';
 
+interface IBadCredentialsError {
+  type: string;
+  status: number;
+  code: string;
+  message: string;
+  reason: string;
+}
+
 class BadCredentialsError extends CustomError {
   public readonly type = BAD_CREDENTIALS_ERROR;
   status: number = 401;
@@ -16,6 +24,16 @@ class BadCredentialsError extends CustomError {
     this._reason = reason;
     // only because we are extending a built-in class
     Object.setPrototypeOf(this, BadCredentialsError.prototype);
+  }
+
+  toJSON(): IBadCredentialsError {
+    return {
+      type: this.type,
+      status: this.status,
+      code: this.code,
+      message: this.message,
+      reason: this.reason,
+    };
   }
 
   toApplicationResponse(): ApplicationResponse<undefined, UniversalError> {
@@ -37,6 +55,10 @@ class BadCredentialsError extends CustomError {
 
   get reason() {
     return this._reason;
+  }
+
+  set reason(reason: string) {
+    this._reason = reason;
   }
 }
 

@@ -5,6 +5,14 @@ import UniversalError from './universal-error';
 import CustomError from './custom-error';
 import ApplicationResponse from '../application-response';
 
+interface IRequestValidationError {
+  type: string;
+  status: number;
+  code: string;
+  message: string;
+  errors: ValidationError[];
+}
+
 class RequestValidationError extends CustomError {
   public readonly type = REQUEST_VALIDATION_ERROR;
   status: number = 422;
@@ -19,8 +27,14 @@ class RequestValidationError extends CustomError {
     Object.setPrototypeOf(this, RequestValidationError.prototype);
   }
 
-  get errors() {
-    return this._errors;
+  toJSON(): IRequestValidationError {
+    return {
+      type: this.type,
+      status: this.status,
+      code: this.code,
+      message: this.message,
+      errors: this.errors,
+    };
   }
 
   toApplicationResponse(): ApplicationResponse<undefined, UniversalError> {
@@ -38,6 +52,14 @@ class RequestValidationError extends CustomError {
       undefined,
       universalError
     );
+  }
+
+  get errors() {
+    return this._errors;
+  }
+
+  set errors(errors: ValidationError[]) {
+    this._errors = errors;
   }
 }
 

@@ -4,6 +4,15 @@ import ApplicationResponse from '../application-response';
 import CustomError from './custom-error';
 import UniversalError from './universal-error';
 
+interface ILibraryError {
+  type: string;
+  status: number;
+  code: string;
+  message: string;
+  library: ErrorObjectTypes.LibraryErrorTypes;
+  reason: string;
+}
+
 class LibraryError extends CustomError {
   public readonly type = LIBRARY_ERROR;
   status: number = 500;
@@ -19,6 +28,17 @@ class LibraryError extends CustomError {
     this._reason = reason;
     // only because we are extending a built-in class
     Object.setPrototypeOf(this, LibraryError.prototype);
+  }
+
+  toJSON(): ILibraryError {
+    return {
+      type: this.type,
+      status: this.status,
+      code: this.code,
+      message: this.message,
+      library: this.library,
+      reason: this.reason,
+    };
   }
 
   toApplicationResponse(): ApplicationResponse<undefined, UniversalError> {
@@ -45,6 +65,14 @@ class LibraryError extends CustomError {
 
   get library() {
     return this._library;
+  }
+
+  set reason(reason: string) {
+    this._reason = reason;
+  }
+
+  set library(library: ErrorObjectTypes.LibraryErrorTypes) {
+    this._library = library;
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "@msnr-ticketing-app/common",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Common utilities for a microservice-based ticketing application.",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -21,7 +21,6 @@
     "@types/express": "^4.17.13",
     "@types/express-validator": "^3.0.0",
     "@types/jsonwebtoken": "^8.5.8",
-    "@types/mongoose": "^5.11.97",
     "@types/node": "^17.0.25",
     "del-cli": "^4.0.1",
     "typescript": "^4.6.3"

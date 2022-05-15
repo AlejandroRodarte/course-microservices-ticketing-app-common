@@ -7,10 +7,12 @@ export namespace NatsTypes {
     opts?: nats.StanOptions
   ) => Promise<nats.Stan>;
 
+  // ticket:created event definition
   export interface TicketCreatedEventData {
     id: string;
     title: string;
     price: number;
+    userId: string;
   }
 
   export interface TicketCreatedEvent {
@@ -18,5 +20,18 @@ export namespace NatsTypes {
     data: TicketCreatedEventData;
   }
 
-  export type Event = TicketCreatedEvent;
+  // ticket:updated event definition
+  export interface TicketUpdatedEventData {
+    id: string;
+    title: string;
+    price: number;
+    userId: string;
+  }
+
+  export interface TicketUpdatedEvent {
+    subject: 'ticket:updated';
+    data: TicketUpdatedEventData;
+  }
+
+  export type Event = TicketCreatedEvent | TicketUpdatedEvent;
 }

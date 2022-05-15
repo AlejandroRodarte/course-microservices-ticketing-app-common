@@ -5,6 +5,7 @@ import DatabaseConnectionError from './database-connection-error';
 import DatabaseOperationError from './database-operation-error';
 import EntityNotFoundError from './entity-not-found-error';
 import LibraryError from './library-error';
+import NatsPublisherError from './nats-publisher-error';
 import RequestValidationError from './request-validation-error';
 import RouteNotFoundError from './route-not-found-error';
 import UnauthorizedError from './unauthorized-error';
@@ -18,6 +19,7 @@ const errors = {
   DatabaseOperationError,
   EntityNotFoundError,
   LibraryError,
+  NatsPublisherError,
   RequestValidationError,
   RouteNotFoundError,
   UnauthorizedError,

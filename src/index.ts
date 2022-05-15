@@ -3,7 +3,6 @@ export { default as db } from './lib/db';
 export { default as jwt } from './lib/jwt';
 export { default as objects } from './lib/objects';
 export { default as routes } from './lib/routes';
-export { default as nats } from './lib/nats';
 
 export { MongooseTypes } from './lib/types/db/mongoose';
 export { JwtTypes } from './lib/types/jwt';

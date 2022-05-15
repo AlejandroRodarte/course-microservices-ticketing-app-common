@@ -1,6 +1,6 @@
 import nats from 'node-nats-streaming';
 import { NatsTypes } from '../../types/nats';
-import NatsPublisherError from '../errors/nats-publisher-error';
+import NatsPublisherError from '../errors/nats-error';
 
 export default abstract class Publisher<E extends NatsTypes.Event> {
   abstract subject: E['subject'];

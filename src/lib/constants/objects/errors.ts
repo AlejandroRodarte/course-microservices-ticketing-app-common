@@ -8,4 +8,4 @@ export const LIBRARY_ERROR = 'LibraryError';
 export const BAD_CREDENTIALS_ERROR = 'BadCredentialsError';
 export const BAD_TOKEN_ERROR = 'BadTokenError';
 export const UNAUTHORIZED_ERROR = 'UnauthorizedError';
-export const NATS_PUBLISHER_ERROR = 'NatsPublisherError'
+export const NATS_ERROR = 'NatsError'

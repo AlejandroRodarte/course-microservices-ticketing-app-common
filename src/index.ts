@@ -12,3 +12,4 @@ export { ErrorObjectTypes } from './lib/types/objects/errors';
 export { ReturnTypes } from './lib/types/returns';
 export { DBHelpersTypes } from './lib/types/db/helpers';
 export { NatsTypes } from './lib/types/nats';
+export { OrderResourceTypes } from './lib/types/resources/order';

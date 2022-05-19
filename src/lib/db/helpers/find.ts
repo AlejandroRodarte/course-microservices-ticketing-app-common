@@ -9,12 +9,16 @@ async function find<
   Model,
   filters,
   errorMessage,
+  opts,
 }: DBHelpersTypes.FindArgs<
   DocumentType,
   ModelType
 >): DBHelpersTypes.FindReturns<DocumentType> {
   try {
-    const documents = await Model.find(filters);
+    const query = Model.find(filters);
+    if (opts?.populateFields)
+      opts.populateFields.forEach((field) => query.populate(field));
+    const documents = await query;
     return [documents, undefined];
   } catch (e) {
     return [

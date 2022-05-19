@@ -88,6 +88,9 @@ export namespace DBHelpersTypes {
     Model: ModelType;
     filters: FilterQuery<DocumentType>;
     errorMessage: string;
+    opts?: {
+      populateFields?: string[];
+    };
   }
   export type FindReturns<DocumentType> = ReturnTypes.AsyncTuple<
     FindDataType<DocumentType>,

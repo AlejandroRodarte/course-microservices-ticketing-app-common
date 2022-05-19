@@ -9,6 +9,6 @@ export namespace ErrorObjectTypes {
     | 'find-by-id'
     | 'find-one'
     | 'find';
-  export type EntityErrorTypes = 'user' | 'ticket';
+  export type EntityErrorTypes = 'user' | 'ticket' | 'order';
   export type LibraryErrorTypes = 'bcrypt';
 }

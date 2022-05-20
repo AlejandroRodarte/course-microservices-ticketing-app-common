@@ -14,6 +14,7 @@ export namespace NatsTypes {
     title: string;
     price: number;
     userId: string;
+    version: number;
   }
 
   export interface TicketCreatedEvent {
@@ -27,6 +28,7 @@ export namespace NatsTypes {
     title: string;
     price: number;
     userId: string;
+    version: number;
   }
 
   export interface TicketUpdatedEvent {
@@ -40,6 +42,7 @@ export namespace NatsTypes {
     status: OrderResourceTypes.Status;
     userId: string;
     expiresAt: string;
+    version: number;
     ticket: {
       id: string;
       price: number;
@@ -54,6 +57,7 @@ export namespace NatsTypes {
   // order:cancelled event definition
   export interface OrderCancelledEventData {
     id: string;
+    version: number;
     ticket: {
       id: string;
     };

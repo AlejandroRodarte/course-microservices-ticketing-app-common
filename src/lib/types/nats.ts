@@ -1,4 +1,5 @@
 import nats from 'node-nats-streaming';
+import { OrderResourceTypes } from './resources/order';
 
 export namespace NatsTypes {
   export type CreateClientFunction = (
@@ -33,5 +34,39 @@ export namespace NatsTypes {
     data: TicketUpdatedEventData;
   }
 
-  export type Event = TicketCreatedEvent | TicketUpdatedEvent;
+  // order:created event definition
+  export interface OrderCreatedEventData {
+    id: string;
+    status: OrderResourceTypes.Status;
+    userId: string;
+    expiresAt: string;
+    ticket: {
+      id: string;
+      price: number;
+    };
+  }
+
+  export interface OrderCreatedEvent {
+    subject: 'order:created';
+    data: OrderCreatedEventData;
+  }
+
+  // order:cancelled event definition
+  export interface OrderCancelledEventData {
+    id: string;
+    ticket: {
+      id: string;
+    };
+  }
+
+  export interface OrderCancelledEvent {
+    subject: 'order:cancelled';
+    data: OrderCancelledEventData;
+  }
+
+  export type Event =
+    | TicketCreatedEvent
+    | TicketUpdatedEvent
+    | OrderCreatedEvent
+    | OrderCancelledEvent;
 }

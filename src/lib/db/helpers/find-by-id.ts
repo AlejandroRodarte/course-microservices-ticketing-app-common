@@ -9,12 +9,16 @@ async function findById<
   Model,
   id,
   errorMessage,
+  opts,
 }: DBHelpersTypes.FindByIdArgs<
   DocumentType,
   ModelType
 >): DBHelpersTypes.FindByIdReturns<DocumentType> {
   try {
-    const document = await Model.findById(id);
+    const query = Model.findById(id);
+    if (opts?.populateFields)
+      opts.populateFields.forEach((field) => query.populate(field));
+    const document = await query;
     return [document, undefined];
   } catch (e) {
     return [

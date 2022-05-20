@@ -4,6 +4,10 @@ import DatabaseOperationError from '../../objects/errors/database-operation-erro
 import { ReturnTypes } from '../returns';
 
 export namespace DBHelpersTypes {
+  interface Opts {
+    populateFields?: string[];
+  }
+
   /**
    * Model.exists()
    */
@@ -52,6 +56,7 @@ export namespace DBHelpersTypes {
     Model: ModelType;
     id: string;
     errorMessage: string;
+    opts?: Opts;
   }
   export type FindByIdReturns<DocumentType> = ReturnTypes.AsyncTuple<
     FindByIdDataType<DocumentType>,
@@ -88,9 +93,7 @@ export namespace DBHelpersTypes {
     Model: ModelType;
     filters: FilterQuery<DocumentType>;
     errorMessage: string;
-    opts?: {
-      populateFields?: string[];
-    };
+    opts?: Opts;
   }
   export type FindReturns<DocumentType> = ReturnTypes.AsyncTuple<
     FindDataType<DocumentType>,

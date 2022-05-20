@@ -81,26 +81,6 @@ export namespace DBHelpersTypes {
   >;
 
   /**
-   * Model.findOneWithPreviousVersion()
-   */
-  export type FindOneWithPreviousVersionDataType<DocumentType> =
-    FindByIdDataType<DocumentType>;
-  export interface FindOneWithPreviousVersionArgs<
-    DocumentType extends { version: number },
-    ModelType extends mongoose.Model<DocumentType>
-  > {
-    Model: ModelType;
-    filters: FilterQuery<DocumentType>;
-    version: number;
-    errorMessage: string;
-  }
-  export type FindOneWithPreviousVersionReturns<DocumentType> =
-    ReturnTypes.AsyncTuple<
-      FindOneWithPreviousVersionDataType<DocumentType>,
-      InstanceType<typeof DatabaseOperationError>
-    >;
-
-  /**
    * Model.find()
    */
   export type FindDataType<DocumentType> = (DocumentType & {

@@ -8,7 +8,7 @@ export default abstract class Listener<E extends NatsTypes.Event> {
   abstract queueGroupName: string;
   abstract onMessage(msg: nats.Message, data: E['data']): void;
 
-  private client: nats.Stan;
+  protected client: nats.Stan;
 
   constructor(client: nats.Stan) {
     this.client = client;

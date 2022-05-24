@@ -68,9 +68,22 @@ export namespace NatsTypes {
     data: OrderCancelledEventData;
   }
 
+  // expiration:complete event definition
+  export interface ExpirationCompleteEventData {
+    order: {
+      id: string;
+    };
+  }
+
+  export interface ExpirationCompleteEvent {
+    subject: 'expiration:complete';
+    data: ExpirationCompleteEventData;
+  }
+
   export type Event =
     | TicketCreatedEvent
     | TicketUpdatedEvent
     | OrderCreatedEvent
-    | OrderCancelledEvent;
+    | OrderCancelledEvent
+    | ExpirationCompleteEvent;
 }

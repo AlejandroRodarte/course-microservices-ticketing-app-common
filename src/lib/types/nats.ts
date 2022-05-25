@@ -29,6 +29,7 @@ export namespace NatsTypes {
     price: number;
     userId: string;
     version: number;
+    orderId?: string;
   }
 
   export interface TicketUpdatedEvent {

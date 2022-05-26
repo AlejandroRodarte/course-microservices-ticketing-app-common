@@ -10,5 +10,5 @@ export namespace ErrorObjectTypes {
     | 'find-one'
     | 'find';
   export type EntityErrorTypes = 'user' | 'ticket' | 'order';
-  export type LibraryErrorTypes = 'bcrypt' | 'bull';
+  export type LibraryErrorTypes = 'bcrypt' | 'bull' | 'stripe';
 }

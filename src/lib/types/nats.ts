@@ -82,15 +82,15 @@ export namespace NatsTypes {
   }
 
   // payment:duplicate-order event definition
-  export interface PaymentDuplicateOrderData {
+  export interface PaymentDuplicateOrderEventData {
     order: {
       id: string;
     };
   }
 
-  export interface PaymentDuplicateOrder {
+  export interface PaymentDuplicateOrderEvent {
     subject: 'payment:duplicate-order';
-    data: PaymentDuplicateOrderData;
+    data: PaymentDuplicateOrderEventData;
   }
 
   export type Event =
@@ -99,5 +99,5 @@ export namespace NatsTypes {
     | OrderCreatedEvent
     | OrderCancelledEvent
     | ExpirationCompleteEvent
-    | PaymentDuplicateOrder;
+    | PaymentDuplicateOrderEvent;
 }

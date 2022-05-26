@@ -81,10 +81,23 @@ export namespace NatsTypes {
     data: ExpirationCompleteEventData;
   }
 
+  // payment:duplicate-order event definition
+  export interface PaymentDuplicateOrderData {
+    order: {
+      id: string;
+    };
+  }
+
+  export interface PaymentDuplicateOrder {
+    subject: 'payment:duplicate-order';
+    data: PaymentDuplicateOrderData;
+  }
+
   export type Event =
     | TicketCreatedEvent
     | TicketUpdatedEvent
     | OrderCreatedEvent
     | OrderCancelledEvent
-    | ExpirationCompleteEvent;
+    | ExpirationCompleteEvent
+    | PaymentDuplicateOrder;
 }

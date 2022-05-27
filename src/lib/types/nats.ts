@@ -105,7 +105,7 @@ export namespace NatsTypes {
   }
 
   // payment:created event definition
-  export interface PaymentCreatedOrderEventData {
+  export interface PaymentCreatedEventData {
     id: string;
     stripeId: string;
     order: {
@@ -113,9 +113,9 @@ export namespace NatsTypes {
     };
   }
 
-  export interface PaymentCreatedOrderEvent {
+  export interface PaymentCreatedEvent {
     subject: 'payment:created';
-    data: PaymentCreatedOrderEventData;
+    data: PaymentCreatedEventData;
   }
 
   export type Event =
@@ -126,5 +126,5 @@ export namespace NatsTypes {
     | OrderCompletedEvent
     | ExpirationCompleteEvent
     | PaymentDuplicateOrderEvent
-    | PaymentCreatedOrderEvent;
+    | PaymentCreatedEvent;
 }

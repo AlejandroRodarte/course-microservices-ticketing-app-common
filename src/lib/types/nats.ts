@@ -69,6 +69,17 @@ export namespace NatsTypes {
     data: OrderCancelledEventData;
   }
 
+  // order:completed event definition
+  export interface OrderCompletedEventData {
+    id: string;
+    version: number;
+  }
+
+  export interface OrderCompletedEvent {
+    subject: 'order:completed';
+    data: OrderCompletedEventData;
+  }
+
   // expiration:complete event definition
   export interface ExpirationCompleteEventData {
     order: {
@@ -93,11 +104,27 @@ export namespace NatsTypes {
     data: PaymentDuplicateOrderEventData;
   }
 
+  // payment:created event definition
+  export interface PaymentCreatedOrderEventData {
+    id: string;
+    stripeId: string;
+    order: {
+      id: string;
+    };
+  }
+
+  export interface PaymentCreatedOrderEvent {
+    subject: 'payment:created';
+    data: PaymentCreatedOrderEventData;
+  }
+
   export type Event =
     | TicketCreatedEvent
     | TicketUpdatedEvent
     | OrderCreatedEvent
     | OrderCancelledEvent
+    | OrderCompletedEvent
     | ExpirationCompleteEvent
-    | PaymentDuplicateOrderEvent;
+    | PaymentDuplicateOrderEvent
+    | PaymentCreatedOrderEvent;
 }
